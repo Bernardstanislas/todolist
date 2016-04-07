@@ -1,0 +1,7 @@
+parameters:
+#    learning_symfony_todolist.example.class: Learning\Symfony\TodolistBundle\Example
+
+services:
+#    learning_symfony_todolist.example:
+#        class: %learning_symfony_todolist.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

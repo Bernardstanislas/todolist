@@ -1,0 +1,6 @@
+<header class="header">
+    <h1>todos</h1>
+    {{ form_start(newTodoForm) }}
+    {{ form_widget(newTodoForm.content, { 'attr': {'class': 'new-todo', 'placeholder': 'What needs to be done?'} }) }}
+    {{ form_end(newTodoForm) }}
+</header>

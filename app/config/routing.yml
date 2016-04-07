@@ -1,0 +1,4 @@
+learning_symfony_todolist:
+    resource: "@LearningSymfonyTodolistBundle/Resources/config/routing.yml"
+    prefix:   /
+
