@@ -14,9 +14,12 @@ class TodoController extends Controller
 
         $todos = $this->getTodos();
 
+        $undoneTodoCount = $this->getUndoneTodos();
+
         return $this->render('LearningSymfonyTodolistBundle::main.html.twig', array(
             'newTodoForm' => $newTodoForm->createView(),
-            'todos' => $todos
+            'todos' => $todos,
+            'undoneCount' => $undoneTodoCount
         ));
     }
 
@@ -37,6 +40,18 @@ class TodoController extends Controller
         $repository = $this->getDoctrine()
         ->getRepository('LearningSymfonyTodolistBundle:Todo');
         return $repository->findAll();
+    }
+
+    private function getUndoneTodos()
+    {
+        $repository = $this->getDoctrine()
+        ->getRepository('LearningSymfonyTodolistBundle:Todo');
+        $query = $repository->createQueryBuilder('undone')
+        ->select('COUNT(undone)')
+        ->where('undone.done = :done')
+        ->setParameter('done', '0')
+        ->getQuery();
+        return $query->getSingleScalarResult();
     }
 
     private function saveTodo($todo)
